@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Persiapan TKA & SNBP 2026 | SMAN 1 Randublatung</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+              900: '#082f49',
+            },
+            smaransa: {
+              yellow: '#f59e0b',
+              blue: '#1e40af',
+              accent: '#38bdf8'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at 50% 0%, #0f172a 0%, #020617 100%);
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+      background: rgba(30, 41, 59, 0.85);
+    }
+    .glow-effect {
+      box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.25);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen text-slate-100 flex flex-col justify-between antialiased selection:bg-sky-500 selection:text-white pb-12">
+
+  <!-- Efek Dekorasi Latar Belakang -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-72 bg-sky-500/10 blur-[120px] pointer-events-none -z-10"></div>
+  <div class="fixed bottom-0 right-0 w-80 h-80 bg-amber-500/10 blur-[140px] pointer-events-none -z-10"></div>
+
+  <!-- Kontainer Utama -->
+  <main class="w-full max-w-xl mx-auto px-4 pt-8 sm:pt-12">
+
+    <!-- Header & Identitas Sekolah -->
+    <header class="text-center flex flex-col items-center mb-8">
+      
+      <!-- Badge Logo SMAN 1 Randublatung -->
+      <div class="relative group cursor-pointer mb-4">
+        <div class="w-24 h-24 rounded-3xl bg-gradient-to-tr from-sky-600 via-blue-700 to-indigo-800 p-0.5 shadow-xl glow-effect flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+          <div class="w-full h-full bg-slate-900/90 rounded-[22px] flex flex-col items-center justify-center p-2 text-center">
+            <i class="fa-solid fa-graduation-cap text-3xl text-sky-400 mb-1"></i>
+            <span class="text-[10px] font-extrabold tracking-wider text-amber-400 uppercase">SMARANSA</span>
+          </div>
+        </div>
+        <span class="absolute -bottom-2 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] font-bold px-2.5 py-0.5 rounded-full backdrop-blur-md flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Edisi 2026
+        </span>
+      </div>
+
+      <!-- Judul & Nama Sekolah -->
+      <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-2 leading-tight">
+        Pusat Akses TKA & SNBP <span class="bg-gradient-to-r from-sky-400 via-cyan-300 to-amber-300 bg-clip-text text-transparent">2026</span>
+      </h1>
+      
+      <p class="text-xs sm:text-sm text-slate-300 font-medium max-w-md leading-relaxed">
+        SMA Negeri 1 Randublatung &bull; Kompilasi Bahan Latihan, Simulasi CBT, & Pedoman Seleksi Akademik
+      </p>
+
+      <!-- Tombol Aksi Cepat: Bagikan & Petunjuk -->
+      <div class="flex items-center gap-2.5 mt-5">
+        <button onclick="copyCurrentUrl()" class="px-3.5 py-1.5 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-semibold flex items-center gap-1.5 border border-slate-700/60 transition active:scale-95 shadow-sm">
+          <i class="fa-solid fa-share-nodes text-sky-400"></i>
+          <span>Bagikan Portal</span>
+        </button>
+
+        <button onclick="toggleModal('infoModal')" class="px-3.5 py-1.5 rounded-full bg-sky-950/60 hover:bg-sky-900/70 text-sky-300 text-xs font-semibold flex items-center gap-1.5 border border-sky-800/50 transition active:scale-95 shadow-sm">
+          <i class="fa-solid fa-circle-info text-amber-400"></i>
+          <span>Petunjuk Siswa</span>
+        </button>
+      </div>
+
+      <!-- Kolom Pencarian Cepat -->
+      <div class="w-full mt-6 relative">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+        <input 
+          type="text" 
+          id="linkSearch" 
+          placeholder="Cari tautan modul, simulasi, atau regulasi..." 
+          onkeyup="filterLinks()"
+          class="w-full bg-slate-800/60 border border-slate-700/70 text-slate-200 placeholder-slate-400 text-xs sm:text-sm rounded-2xl pl-11 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500 transition shadow-inner"
+        />
+      </div>
+
+    </header>
+
+    <!-- Daftar Tautan & Konten -->
+    <section id="linksContainer" class="flex flex-col gap-4">
+
+      <!-- ITEM 1: UTAMA - Soal Latihan SMARANSA 2026 -->
+      <a 
+        href="https://s.id/tkasmaransa26" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        data-title="soal latihan tka sman 1 randublatung smaransa modul bank soal 2026"
+        class="link-item group relative glass-card p-4 sm:p-5 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-500/10 flex items-center gap-4 overflow-hidden border-l-4 border-l-amber-400"
+      >
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-900 font-bold text-xl shadow-lg shrink-0 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-folder-open text-slate-900"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-0.5">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-amber-400/10 px-2 py-0.5 rounded-md border border-amber-400/20">
+              Eksklusif SMARANSA
+            </span>
+            <span class="text-[10px] text-slate-400 font-mono">s.id/tkasmaransa26</span>
+          </div>
+          <h2 class="text-sm sm:text-base font-bold text-white group-hover:text-amber-300 transition-colors truncate">
+            Referensi Soal Latihan TKA SMARANSA 2026
+          </h2>
+          <p class="text-xs text-slate-300 line-clamp-2 mt-0.5 leading-snug">
+            Bank soal komprehensif dan bahan ajar latihan persiapan Tes Kemampuan Akademik SMAN 1 Randublatung tahun 2026.
+          </p>
+        </div>
+        <div class="text-slate-400 group-hover:text-amber-300 group-hover:translate-x-1 transition shrink-0 pl-1">
+          <i class="fa-solid fa-arrow-up-right-from-square text-sm sm:text-base"></i>
+        </div>
+      </a>
+
+      <!-- ITEM 2: Simulasi Ayo Coba TKA (Pusmendik) -->
+      <a 
+        href="https://pusmendik.kemendikdasmen.go.id/tka/simulasi_tka" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        data-title="ayo coba tka simulasi ujian cbt pusmendik kemendikdasmen tryout gratis"
+        class="link-item group relative glass-card p-4 sm:p-5 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-500/10 flex items-center gap-4 overflow-hidden border-l-4 border-l-sky-400"
+      >
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shrink-0 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-laptop-code text-white"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-0.5">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-sky-300 bg-sky-400/10 px-2 py-0.5 rounded-md border border-sky-400/20">
+              Simulasi Resmi Kemendikdasmen
+            </span>
+          </div>
+          <h2 class="text-sm sm:text-base font-bold text-white group-hover:text-sky-300 transition-colors truncate">
+            Ayo Coba TKA (Simulasi Interaktif CBT)
+          </h2>
+          <p class="text-xs text-slate-300 line-clamp-2 mt-0.5 leading-snug">
+            Coba langsung format aplikasi tes berbasis komputer dan tipe soal asli Pusmendik Kemendikdasmen.
+          </p>
+        </div>
+        <div class="text-slate-400 group-hover:text-sky-300 group-hover:translate-x-1 transition shrink-0 pl-1">
+          <i class="fa-solid fa-play text-sm sm:text-base"></i>
+        </div>
+      </a>
+
+      <!-- ITEM 3: Kerangka Asesmen TKA SMA (Pusmendik) -->
+      <a 
+        href="https://pusmendik.kemendikdasmen.go.id/tka/tka/view/mata-pelajaran-wajib/sma" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        data-title="kerangka asesmen tka sma mata pelajaran wajib kisi-kisi pusmendik silabus"
+        class="link-item group relative glass-card p-4 sm:p-5 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-500/10 flex items-center gap-4 overflow-hidden border-l-4 border-l-indigo-400"
+      >
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shrink-0 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-list-check text-white"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-0.5">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-300 bg-indigo-400/10 px-2 py-0.5 rounded-md border border-indigo-400/20">
+              Kisi-kisi & Struktur
+            </span>
+          </div>
+          <h2 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-300 transition-colors truncate">
+            Kerangka Asesmen TKA SMA (Mapel Wajib)
+          </h2>
+          <p class="text-xs text-slate-300 line-clamp-2 mt-0.5 leading-snug">
+            Pelajari domain kompetensi, bentuk soal, capaian asesmen, dan indikator penilaian resmi jenjang SMA.
+          </p>
+        </div>
+        <div class="text-slate-400 group-hover:text-indigo-300 group-hover:translate-x-1 transition shrink-0 pl-1">
+          <i class="fa-solid fa-arrow-up-right-from-square text-sm sm:text-base"></i>
+        </div>
+      </a>
+
+      <!-- ITEM 4: Kepmendikdasmen No. 102/M/2025 (Regulasi Mapel Pendukung SNBP) -->
+      <div 
+        data-title="kepmendikdasmen nomor 102 m 2025 mata pelajaran pendukung prodi snbp snpmb ptn hukum jurusan aturan"
+        class="link-item group glass-card p-4 sm:p-5 rounded-2xl border-l-4 border-l-emerald-400 transition-all duration-300 hover:-translate-y-1"
+      >
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-slate-950 font-bold text-xl shadow-lg shrink-0 mt-0.5 group-hover:scale-105 transition-transform">
+            <i class="fa-solid fa-scale-balanced text-slate-950"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-300 bg-emerald-400/10 px-2 py-0.5 rounded-md border border-emerald-400/20">
+                Regulasi Nasional SNBP
+              </span>
+              <span class="text-[10px] text-amber-300 bg-amber-400/10 px-2 py-0.5 rounded-md border border-amber-400/20 font-semibold">
+                Wajib Diketahui Siswa
+              </span>
+            </div>
+            
+            <h2 class="text-sm sm:text-base font-bold text-white group-hover:text-emerald-300 transition-colors">
+              Kepmendikdasmen Nomor 102/M/2025
+            </h2>
+            <p class="text-xs text-slate-300 mt-1 leading-snug">
+              Pedoman resmi mengenai <strong>Mata Pelajaran Pendukung Program Studi</strong> dalam Seleksi Nasional Berdasarkan Prestasi (SNBP).
+            </p>
+
+            <!-- Tombol Ringkasan Interaktif -->
+            <div class="mt-3 pt-3 border-t border-slate-700/60 flex flex-wrap gap-2">
+              <button 
+                onclick="toggleModal('kepmenModal')"
+                class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5 transition active:scale-95"
+              >
+                <i class="fa-solid fa-book-open-reader"></i>
+                <span>Lihat Panduan & Ringkasan Mapel</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- State Kosong jika Pencarian Tidak Ditemukan -->
+    <div id="noResults" class="hidden text-center py-12 px-4">
+      <i class="fa-solid fa-circle-question text-4xl text-slate-500 mb-3"></i>
+      <p class="text-sm text-slate-300 font-semibold">Tautan tidak ditemukan</p>
+      <p class="text-xs text-slate-500 mt-1">Coba gunakan kata kunci lain seperti "latihan", "simulasi", atau "SNBP".</p>
+    </div>
+
+    <!-- Tips Singkat Persiapan Siswa -->
+    <section class="mt-8 pt-6 border-t border-slate-800/80">
+      <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
+        <i class="fa-solid fa-bullhorn text-sky-400"></i>
+        <span>Tips Sukses TKA & SNBP SMARANSA</span>
+      </h3>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+        <div class="glass-card p-3.5 rounded-xl border border-slate-700/40 flex items-start gap-2.5">
+          <div class="text-sky-400 mt-0.5"><i class="fa-solid fa-circle-check"></i></div>
+          <div>
+            <span class="font-bold text-slate-200">Kuasai Konsep Esensial</span>
+            <p class="text-slate-400 text-[11px] mt-0.5">TKA mengukur penalaran analitis dan penguasaan fondasi mata pelajaran wajib.</p>
+          </div>
+        </div>
+
+        <div class="glass-card p-3.5 rounded-xl border border-slate-700/40 flex items-start gap-2.5">
+          <div class="text-amber-400 mt-0.5"><i class="fa-solid fa-compass"></i></div>
+          <div>
+            <span class="font-bold text-slate-200">Linearitas Mapel SNBP</span>
+            <p class="text-slate-400 text-[11px] mt-0.5">Cek mata pelajaran pendukung prodi pilihan Anda sesuai Kepmen 102/M/2025.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer dengan Alamat Lengkap SMAN 1 Randublatung -->
+  <footer class="mt-12 text-center text-xs text-slate-400 px-4">
+    <div class="max-w-xl mx-auto flex flex-col items-center gap-1.5 border-t border-slate-800/80 pt-6">
+      <p class="font-semibold text-slate-300 flex items-center gap-2">
+        <i class="fa-solid fa-school text-sky-400"></i>
+        SMA Negeri 1 Randublatung
+      </p>
+      <p class="text-[11px] text-slate-400 max-w-md text-center leading-relaxed">
+        Jl. Blora No. 37, Randublatung, Kab. Blora, Jawa Tengah, 58382
+      </p>
+      <p class="text-[10px] text-slate-500 mt-2">
+        &copy; 2026 Tim Akademik & Bimbingan Konseling SMARANSA.
+      </p>
+    </div>
+  </footer>
+
+  <!-- MODAL: Panduan Kepmendikdasmen No. 102/M/2025 -->
+  <div id="kepmenModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="glass-card bg-slate-900 border border-slate-700 w-full max-w-lg rounded-2xl max-h-[90vh] flex flex-col overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-200">
+      
+      <!-- Header Modal -->
+      <div class="p-4 sm:p-5 border-b border-slate-800 flex items-center justify-between bg-slate-800/40">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-base">
+            <i class="fa-solid fa-file-shield"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-sm sm:text-base text-white">Ringkasan Kepmendikdasmen 102/M/2025</h3>
+            <p class="text-[11px] text-slate-400">Mata Pelajaran Pendukung Program Studi SNBP</p>
+          </div>
+        </div>
+        <button onclick="toggleModal('kepmenModal')" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center text-sm transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Isi Modal -->
+      <div class="p-4 sm:p-5 overflow-y-auto space-y-4 text-xs sm:text-sm text-slate-300">
+        <div class="bg-emerald-950/40 border border-emerald-800/40 rounded-xl p-3.5 text-xs">
+          <p class="font-bold text-emerald-300 mb-1 flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-info"></i> Apa itu Kepmendikdasmen 102/M/2025?
+          </p>
+          <p class="text-slate-300 leading-relaxed">
+            Keputusan Menteri yang menetapkan daftar <strong>Mata Pelajaran Pendukung</strong> yang nilai rapornya dihitung dan menjadi bobot penilaian utama dalam penentuan kelulusan jalur <strong>SNBP (Seleksi Nasional Berdasarkan Prestasi)</strong> perguruan tinggi negeri.
+          </p>
+        </div>
+
+        <h4 class="font-bold text-white text-xs uppercase tracking-wider">Contoh Rumpun Ilmu & Mapel Pendukung SMA:</h4>
+        
+        <div class="space-y-2 text-xs">
+          <div class="p-3 bg-slate-800/50 rounded-lg border border-slate-700/50">
+            <p class="font-bold text-sky-300">1. Rumpun Kedokteran, Keperawatan, Kebidanan</p>
+            <p class="text-slate-400 mt-0.5">Mapel Pendukung: <span class="text-slate-200 font-semibold">Biologi dan/atau Kimia</span></p>
+          </div>
+
+          <div class="p-3 bg-slate-800/50 rounded-lg border border-slate-700/50">
+            <p class="font-bold text-sky-300">2. Rumpun Teknik, Komputer, & Sains Data</p>
+            <p class="text-slate-400 mt-0.5">Mapel Pendukung: <span class="text-slate-200 font-semibold">Matematika Tingkat Lanjut / Fisika / Kimia</span></p>
+          </div>
+
+          <div class="p-3 bg-slate-800/50 rounded-lg border border-slate-700/50">
+            <p class="font-bold text-sky-300">3. Rumpun Ekonomi, Manajemen, & Akuntansi</p>
+            <p class="text-slate-400 mt-0.5">Mapel Pendukung: <span class="text-slate-200 font-semibold">Ekonomi dan/atau Matematika</span></p>
+          </div>
+
+          <div class="p-3 bg-slate-800/50 rounded-lg border border-slate-700/50">
+            <p class="font-bold text-sky-300">4. Rumpun Hukum, Sosial Humaniora, & Komunikasi</p>
+            <p class="text-slate-400 mt-0.5">Mapel Pendukung: <span class="text-slate-200 font-semibold">Sosiologi / PPKn / Bahasa Indonesia</span></p>
+          </div>
+        </div>
+
+        <div class="p-3 bg-amber-500/10 rounded-lg border border-amber-500/30 text-amber-200 text-xs">
+          <i class="fa-solid fa-lightbulb mr-1 text-amber-400"></i>
+          <strong>Saran Guru BK SMARANSA:</strong> Pastikan nilai mata pelajaran pendukung Anda konsisten dan maksimal dari semester 1 s.d. semester 5.
+        </div>
+      </div>
+
+      <!-- Footer Modal -->
+      <div class="p-4 border-t border-slate-800 bg-slate-800/40 flex justify-end">
+        <button onclick="toggleModal('kepmenModal')" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-xs font-semibold transition">
+          Tutup
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Petunjuk Siswa -->
+  <div id="infoModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="glass-card bg-slate-900 border border-slate-700 w-full max-w-md rounded-2xl max-h-[90vh] flex flex-col overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-200">
+      
+      <!-- Header Modal -->
+      <div class="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-800/40">
+        <div class="flex items-center gap-2.5">
+          <i class="fa-solid fa-circle-question text-sky-400 text-lg"></i>
+          <h3 class="font-bold text-sm text-white">Panduan Penggunaan Portal</h3>
+        </div>
+        <button onclick="toggleModal('infoModal')" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center text-sm transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Isi Modal -->
+      <div class="p-4 space-y-3 text-xs text-slate-300">
+        <p class="leading-relaxed">Portal ini disusun khusus untuk mempermudah siswa SMAN 1 Randublatung dalam mempersiapkan tahapan asesmen akademik 2026:</p>
+        <ol class="list-decimal list-inside space-y-2 text-slate-200">
+          <li><strong>Unduh Latihan:</strong> Klik link <em>s.id/tkasmaransa26</em> untuk mengakses modul latihan mandiri sekolah.</li>
+          <li><strong>Uji Coba CBT:</strong> Gunakan link <em>Ayo Coba TKA</em> dari Pusmendik untuk membiasakan diri dengan format tes.</li>
+          <li><strong>Pelajari Kisi-Kisi:</strong> Pahami matriks capaian di menu <em>Kerangka Asesmen TKA SMA</em>.</li>
+          <li><strong>Konsultasi BK:</strong> Cocokkan pilihan jurusan Anda dengan ketentuan <em>Kepmen 102/M/2025</em>.</li>
+        </ol>
+      </div>
+
+      <!-- Footer Modal -->
+      <div class="p-3 border-t border-slate-800 bg-slate-800/40 flex justify-end">
+        <button onclick="toggleModal('infoModal')" class="px-4 py-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-semibold transition">
+          Mengerti
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notifikasi Toast -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-800 border border-sky-500/50 text-slate-100 px-4 py-2.5 rounded-xl shadow-2xl text-xs flex items-center gap-2 transition-all duration-300 opacity-0 pointer-events-none translate-y-4 z-50">
+    <i class="fa-solid fa-check-circle text-sky-400"></i>
+    <span id="toastMsg">Tautan berhasil disalin!</span>
+  </div>
+
+  <!-- Logika JavaScript Interaktif -->
+  <script>
+    // Pencarian / Filter Tautan Real-time
+    function filterLinks() {
+      const input = document.getElementById('linkSearch').value.toLowerCase().trim();
+      const items = document.querySelectorAll('.link-item');
+      let visibleCount = 0;
+
+      items.forEach(item => {
+        const titleData = item.getAttribute('data-title') || '';
+        const itemText = item.innerText.toLowerCase();
+        
+        if (titleData.includes(input) || itemText.includes(input)) {
+          item.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      const noResults = document.getElementById('noResults');
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    }
+
+    // Fungsi Buka/Tutup Modal
+    function toggleModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.toggle('hidden');
+      }
+    }
+
+    // Menutup modal jika area luar (backdrop) diklik
+    window.onclick = function(event) {
+      if (event.target.id === 'kepmenModal') {
+        toggleModal('kepmenModal');
+      }
+      if (event.target.id === 'infoModal') {
+        toggleModal('infoModal');
+      }
+    }
+
+    // Menampilkan Notifikasi Toast
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.innerText = message;
+      toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+      }, 2500);
+    }
+
+    // Menyalin URL Portal ke Clipboard
+    function copyCurrentUrl() {
+      const currentUrl = window.location.href;
+      
+      const tempInput = document.createElement('input');
+      tempInput.value = currentUrl;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      
+      try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+          showToast('Link portal berhasil disalin ke clipboard!');
+        } else {
+          showToast('Silakan salin tautan melalui bilah alamat browser.');
+        }
+      } catch (err) {
+        showToast('Gagal menyalin link secara otomatis.');
+      }
+      
+      document.body.removeChild(tempInput);
+    }
+  </script>
+</body>
+</html>
